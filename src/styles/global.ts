@@ -16,20 +16,25 @@ body{
     background: ${theme.COLORS.BACKGROUND};
     color: ${theme.COLORS['BASE-TEXT']};
   `}
-  -webkit-font-smoonthing: antialiased;
-  line-height: 130%;
+  -webkit-font-smoothing: antialiased;
+ 
 }
 
 a{
   text-decoration: none;
 }
 
+h1, h2, h3{
+  line-height: 130%;
+  font-family: ${(props) => props.theme.FONT_FAMILY.TITLE}, 'sans-serif';
+}
+
+
 body, input, text-area, button{
   ${({ theme }) => css`
-    font-family: ${theme.FONT_FAMILY.TEXT};
+    font-family: ${theme.FONT_FAMILY.TEXT}, sans-serif;
     font-size: ${theme.FONT_SIZE['TEXT-M']}rem;
   `}
   font-weight: 400;
 }
-
 `

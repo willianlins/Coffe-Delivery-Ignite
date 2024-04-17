@@ -1,4 +1,4 @@
-export const defaultTheme = {
+export default {
   COLORS: {
     YELLOW: '#DBAC2C',
     'YELLOW-DARK': '#C47F17',
@@ -20,8 +20,8 @@ export const defaultTheme = {
     WHITE: '#FFFFFF',
   },
   FONT_FAMILY: {
-    TITLE: 'Ballo 2',
-    TEXT: 'Roboto',
+    TITLE: '"Baloo 2"',
+    TEXT: '"Roboto"',
   },
   FONT_SIZE: {
     'TITLE-XL': '3', // 48px
@@ -39,4 +39,4 @@ export const defaultTheme = {
     'BUTTON-G': '0.875', // 14px
     'BUTTON-M': '0.75', // 12px
   },
-}
+} as const

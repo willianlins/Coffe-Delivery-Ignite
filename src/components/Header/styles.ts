@@ -65,7 +65,6 @@ export const HeaderButtonCart = styled(HeaderButton)`
     top: -0.5rem;
     right: -0.5rem;
   }
-
   &:hover {
     ${({ theme }) => css`
       color: ${theme.COLORS['YELLOW-LIGHT']};
