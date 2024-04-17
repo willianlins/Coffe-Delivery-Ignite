@@ -1,6 +1,11 @@
-import { ShoppingCart } from 'phosphor-react'
+import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 
-import { ContainerCoffeInfo, CoffeInfoShooping, CoffeInfo } from './styles'
+import {
+  ContainerCoffeInfo,
+  CoffeInfoShooping,
+  CoffeInfo,
+  CoffeInfoAmount,
+} from './styles'
 
 import CoffeImg from '../../../../assets/coffes/americano.svg'
 
@@ -20,9 +25,11 @@ export function Coffe() {
         <span>
           R$<strong>9,90</strong>
         </span>
-        <div>
-          <input type="number" />
-        </div>
+        <CoffeInfoAmount>
+          <Minus size={14} weight="fill" />
+          <input type="number" value={1} />
+          <Plus size={14} weight="fill" />
+        </CoffeInfoAmount>
         <button>
           <ShoppingCart />
         </button>
