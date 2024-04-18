@@ -9,6 +9,7 @@ import {
   InfoQualityList,
 } from './styles'
 import { Coffe } from './Components/Coffe'
+import { mockCoffes } from './dataMock'
 
 export function Home() {
   return (
@@ -55,7 +56,20 @@ export function Home() {
       </ContainerInfoBanner>
       <ContentListCoffe>
         <h2>Nosso Cafés</h2>
-        <Coffe />
+        <div>
+          {mockCoffes.map((coffe) => {
+            return (
+              <Coffe
+                key={coffe.title}
+                title={coffe.title}
+                description={coffe.description}
+                imageSrc={coffe.imageSrc}
+                typeCoffe={coffe.typeCoffe}
+                price={coffe.price}
+              />
+            )
+          })}
+        </div>
       </ContentListCoffe>
     </ContainerMain>
   )

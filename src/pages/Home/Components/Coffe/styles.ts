@@ -49,24 +49,43 @@ export const CoffeInfo = styled.div`
 `
 
 export const CoffeInfoShooping = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-  padding: 0 1rem;
-  text-align: center;
-  flex-wrap: wrap;
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    padding: 0 1rem;
+    text-align: center;
+    flex-wrap: wrap;
 
-  span {
-    font-size: ${(props) => props.theme.FONT_SIZE['TEXT-S']}rem;
+    span {
+      font-size: ${theme.FONT_SIZE['TEXT-S']}rem;
 
-    strong {
-      font-size: ${(props) => props.theme.FONT_SIZE['TITLE-M']}rem;
-      font-family: ${(props) => props.theme.FONT_FAMILY.TITLE}, 'sans-serif';
-      font-weight: 800;
-      margin-left: 0.313rem;
+      strong {
+        font-size: ${theme.FONT_SIZE['TITLE-M']}rem;
+        font-family: ${theme.FONT_FAMILY.TITLE}, 'sans-serif';
+        font-weight: 800;
+        margin-left: 0.313rem;
+      }
     }
-  }
+
+    button {
+      border: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      padding: 0.563rem;
+      color: ${theme.COLORS['BASE-CARD']};
+      background: ${theme.COLORS['PURPLE-DARK']};
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background: ${theme.COLORS.PURPLE};
+      }
+    }
+  `}
 `
 export const CoffeInfoAmount = styled.div`
   width: 4.5rem;
@@ -82,12 +101,21 @@ export const CoffeInfoAmount = styled.div`
   }
 
   input {
-    width: 1.125rem;
+    width: 1.5rem;
     -moz-appearance: textfield;
     appearance: textfield;
     text-align: center;
 
     border: 0;
     background: transparent;
+  }
+
+  svg {
+    color: ${(props) => props.theme.COLORS.PURPLE};
+    cursor: pointer;
+    transition: color 0.3s;
+    &:hover {
+      color: ${(props) => props.theme.COLORS['PURPLE-DARK']};
+    }
   }
 `

@@ -88,4 +88,14 @@ export const ContentListCoffe = styled.section`
     font-size: ${(props) => props.theme.FONT_SIZE['TITLE-L']}rem;
     color: ${(props) => props.theme.COLORS['BASE-SUBTITLE']};
   }
+
+  > div {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+
+    > div {
+      margin-bottom: 0.5rem;
+    }
+  }
 `
