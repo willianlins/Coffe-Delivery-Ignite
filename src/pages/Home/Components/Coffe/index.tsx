@@ -1,14 +1,11 @@
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
 
-import {
-  ContainerCoffeInfo,
-  CoffeInfoShooping,
-  CoffeInfo,
-  CoffeInfoAmount,
-} from './styles'
+import { ContainerCoffeInfo, CoffeInfoShooping, CoffeInfo } from './styles'
 
 // import CoffeImg from '../../../../assets/coffes/americano.svg'
-import { useState } from 'react'
+
+import { NavLink } from 'react-router-dom'
+import { QuantityInput } from '../../../../components/QuatityInput'
 
 interface CoffeProps {
   title: string
@@ -25,20 +22,6 @@ export function Coffe({
   price,
   typeCoffe,
 }: CoffeProps) {
-  const [quantityCoffe, setQuantityCoffe] = useState<number>(1)
-
-  function handleLessQuatityCoffe() {
-    if (quantityCoffe > 1) {
-      setQuantityCoffe((state) => state - 1)
-    }
-  }
-
-  function handleMoreQuatityCoffe() {
-    if (quantityCoffe < 9) {
-      setQuantityCoffe((state) => state + 1)
-    }
-  }
-
   return (
     <ContainerCoffeInfo>
       <CoffeInfo>
@@ -55,26 +38,17 @@ export function Coffe({
         <span>
           R$
           <strong>
-            {(price * quantityCoffe).toLocaleString('pt-br', {
+            {price.toLocaleString('pt-br', {
               minimumFractionDigits: 2,
             })}
           </strong>
         </span>
-        <CoffeInfoAmount>
-          <Minus size={16} weight="fill" onClick={handleLessQuatityCoffe} />
-          <input
-            type="number"
-            step={1}
-            max={9}
-            min={1}
-            value={quantityCoffe}
-            onChange={() => quantityCoffe}
-          />
-          <Plus size={16} weight="fill" onClick={handleMoreQuatityCoffe} />
-        </CoffeInfoAmount>
-        <button>
-          <ShoppingCart size={20} weight="fill" />
-        </button>
+        <QuantityInput />
+        <NavLink to="/Checkout" title="Checkout">
+          <button>
+            <ShoppingCart size={20} weight="fill" />
+          </button>
+        </NavLink>
       </CoffeInfoShooping>
     </ContainerCoffeInfo>
   )

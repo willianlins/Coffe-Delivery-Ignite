@@ -1,72 +1,90 @@
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
 import {
-  CheckoutFormLeft,
   CheckoutFormLeftInfo,
   CheckoutFormLeftInfoHeader,
   CheckoutFormLeftPayment,
   CheckoutFormRight,
   ContainerCheckout,
+  FormLeftInfoInput,
+  FormLeftPayment,
 } from './styles'
+import { CoffeList } from './Components/CoffeList'
 
 export function Checkout() {
   return (
     <ContainerCheckout>
       <div>
         <h2>Complete seu pedido</h2>
-        <CheckoutFormLeft>
+        <div>
           <CheckoutFormLeftInfo>
-            <div>
+            <CheckoutFormLeftInfoHeader $statusColor="orange">
               <MapPin size={22} />
-              <CheckoutFormLeftInfoHeader>
+              <div>
                 <h2>Endeço de Entrega</h2>
                 <p>Informe o endereço onde deseja receber seu pedido</p>
-              </CheckoutFormLeftInfoHeader>
-            </div>
-            <input type="text" placeholder="CEP" name="CEP" />
-            <input type="text" placeholder="Rua" name="RUA" />
-            <input type="text" placeholder="Número" />
-            <input type="text" placeholder="Complemento" />
-            <input type="text" placeholder="Bairro" />
-            <input type="text" placeholder="Cidade" />
-            <input type="text" placeholder="UF" />
+              </div>
+            </CheckoutFormLeftInfoHeader>
+            <FormLeftInfoInput>
+              <input type="text" placeholder="CEP" name="CEP" />
+              <input type="text" placeholder="Rua" name="Rua" />
+              <input type="text" placeholder="Número" name="Numero" />
+              <div tabIndex={0}>
+                <input
+                  type="text"
+                  placeholder="Complemento"
+                  name="Complemento"
+                />
+                Opcional
+              </div>
+              <input type="text" placeholder="Bairro" name="Bairro" />
+              <input type="text" placeholder="Cidade" name="Cidade" />
+              <input type="text" placeholder="UF" name="UF" />
+            </FormLeftInfoInput>
           </CheckoutFormLeftInfo>
           <CheckoutFormLeftPayment>
-            <div>
+            <CheckoutFormLeftInfoHeader $statusColor="purple">
               <CurrencyDollar size={22} />
-              <CheckoutFormLeftInfoHeader>
-                <h2>Endeço de Entrega</h2>
-                <p>Informe o endereço onde deseja receber seu pedido</p>
-              </CheckoutFormLeftInfoHeader>
-            </div>
-            <input
-              type="radio"
-              id="creditCard"
-              value="creditCard"
-              name="payment"
-            />
-            <label htmlFor="creditCard">
-              <CreditCard size={16} /> CARTÃO DE CRÉDITO
-            </label>
-            <input
-              type="radio"
-              id="debitCard"
-              value="debitCard"
-              name="payment"
-            />
-            <label htmlFor="debitCard">
-              <Bank size={16} /> CARTÃO DE DÉBITO
-            </label>
-            <input type="radio" id="money" value="money" name="payment" />
-            <label htmlFor="money">
-              <Money size={16} /> CARTÃO DE DÉBITO
-            </label>
+              <div>
+                <h2>Pagamento</h2>
+                <p>
+                  O pagamento é feito na entrega. Escolha a forma que deseja
+                  pagar
+                </p>
+              </div>
+            </CheckoutFormLeftInfoHeader>
+            <FormLeftPayment>
+              <input
+                type="radio"
+                id="creditCard"
+                value="creditCard"
+                name="payment"
+              />
+              <label htmlFor="creditCard">
+                <CreditCard size={16} /> CARTÃO DE CRÉDITO
+              </label>
+
+              <input
+                type="radio"
+                id="debitCard"
+                value="debitCard"
+                name="payment"
+              />
+              <label htmlFor="debitCard">
+                <Bank size={16} /> CARTÃO DE DÉBITO
+              </label>
+
+              <input type="radio" id="money" value="money" name="payment" />
+              <label htmlFor="money">
+                <Money size={16} /> Dinheiro
+              </label>
+            </FormLeftPayment>
           </CheckoutFormLeftPayment>
-        </CheckoutFormLeft>
+        </div>
       </div>
       <div>
         <h2>Cafés selecionados</h2>
         <CheckoutFormRight>
-          <div>LISTA</div>
+          <CoffeList />
 
           <table>
             <tbody>
