@@ -7,6 +7,8 @@ import {
   ContainerCheckout,
   FormLeftInfoInput,
   FormLeftPayment,
+  FormRightListCoffe,
+  FormRightPriceList,
 } from './styles'
 import { CoffeList } from './Components/CoffeList'
 
@@ -84,9 +86,14 @@ export function Checkout() {
       <div>
         <h2>Cafés selecionados</h2>
         <CheckoutFormRight>
-          <CoffeList />
+          <FormRightListCoffe>
+            <CoffeList />
+          </FormRightListCoffe>
+          <FormRightListCoffe>
+            <CoffeList />
+          </FormRightListCoffe>
 
-          <table>
+          <FormRightPriceList>
             <tbody>
               <tr>
                 <td>Total de itens</td>
@@ -97,13 +104,15 @@ export function Checkout() {
                 <td>R$ 3,50</td>
               </tr>
               <tr>
-                <td>Total</td>
+                <td>
+                  <strong>Total</strong>
+                </td>
                 <td>
                   <strong>R$ 33,50</strong>
                 </td>
               </tr>
             </tbody>
-          </table>
+          </FormRightPriceList>
           <button type="submit">CONFIRMAR PEDIDO</button>
         </CheckoutFormRight>
       </div>

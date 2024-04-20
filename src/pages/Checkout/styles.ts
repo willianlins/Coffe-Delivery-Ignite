@@ -22,6 +22,40 @@ export const CheckoutFormRight = styled.div`
   padding: 2.5rem;
   margin-top: 1rem;
   background: ${(props) => props.theme.COLORS['BASE-CARD']};
+
+  display: flex;
+  flex-direction: column;
+
+  button {
+    padding: 0.75rem;
+    color: ${(props) => props.theme.COLORS.WHITE};
+    font-size: ${(props) => props.theme.FONT_SIZE['BUTTON-G']}rem;
+    background: ${(props) => props.theme.COLORS.YELLOW};
+    line-height: 160%;
+    border-radius: 6px;
+    border: 0;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    &:hover {
+      background: ${(props) => props.theme.COLORS['YELLOW-DARK']};
+    }
+  }
+`
+
+export const FormRightPriceList = styled.table`
+  margin-bottom: 1.5rem;
+
+  strong {
+    font-size: ${(props) => props.theme.FONT_SIZE['TEXT-L']}rem;
+    color: ${(props) => props.theme.COLORS['BASE-SUBTITLE']};
+  }
+`
+
+export const FormRightListCoffe = styled.div`
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid ${(props) => props.theme.COLORS['BASE-BUTTON']};
 `
 
 const COLOR_TYPE_ICON = {

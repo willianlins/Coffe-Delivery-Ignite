@@ -31,16 +31,24 @@ export const CoffeListDetails = styled.div`
       display: flex;
       flex-direction: row;
       align-items: center;
-      padding: 0.25rem;
+      padding: 0.25rem 0.5rem;
       border: 0;
       gap: 0.25rem;
       background: ${(props) => props.theme.COLORS['BASE-BUTTON']};
       border-radius: 8px;
       font-size: ${(props) => props.theme.FONT_SIZE['BUTTON-M']}rem;
       line-height: 160%;
-
+      transition:
+        color 0.3s,
+        background-color 0.3s;
+      cursor: pointer;
       svg {
         color: ${(props) => props.theme.COLORS.PURPLE};
+      }
+
+      &:hover {
+        color: ${(props) => props.theme.COLORS['BASE-SUBTITLE']};
+        background: ${(props) => props.theme.COLORS['BASE-HOVER']};
       }
     }
   }
