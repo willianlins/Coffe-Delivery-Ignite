@@ -35,6 +35,7 @@ export const CoffeListDetails = styled.div`
       border: 0;
       gap: 0.25rem;
       background: ${(props) => props.theme.COLORS['BASE-BUTTON']};
+      color: ${(props) => props.theme.COLORS['BASE-TEXT']};
       border-radius: 8px;
       font-size: ${(props) => props.theme.FONT_SIZE['BUTTON-M']}rem;
       line-height: 160%;

@@ -11,6 +11,7 @@ import {
   FormRightPriceList,
 } from './styles'
 import { CoffeList } from './Components/CoffeList'
+import { NavLink } from 'react-router-dom'
 
 export function Checkout() {
   return (
@@ -113,7 +114,9 @@ export function Checkout() {
               </tr>
             </tbody>
           </FormRightPriceList>
-          <button type="submit">CONFIRMAR PEDIDO</button>
+          <NavLink to={'/Success'}>
+            <button type="submit">CONFIRMAR PEDIDO</button>
+          </NavLink>
         </CheckoutFormRight>
       </div>
     </ContainerCheckout>

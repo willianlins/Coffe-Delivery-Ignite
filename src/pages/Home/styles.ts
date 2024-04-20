@@ -41,42 +41,14 @@ export const InfoBannerText = styled.div`
       font-size: ${theme.FONT_SIZE['TEXT-L']}rem;
       color: ${theme.COLORS['BASE-SUBTITLE']};
     }
-    ul {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 15rem 1fr;
-      gap: 1.25rem 2.5rem;
-    }
-
-    ul li {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 0.625rem;
-    }
   `};
 `
 
-const COLOR_TYPE_SPAN = {
-  orange: 'YELLOW-DARK',
-  black: 'BASE-TEXT',
-  yellow: 'YELLOW',
-  purple: 'PURPLE',
-}
-interface InfoQualityListProps {
-  $statusColor: keyof typeof COLOR_TYPE_SPAN
-}
-
-export const InfoQualityList = styled.span<InfoQualityListProps>`
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  color: ${(props) => props.theme.COLORS.BACKGROUND};
-  background: ${(props) =>
-    props.theme.COLORS[COLOR_TYPE_SPAN[props.$statusColor]]};
+export const BannerTextLists = styled.ul`
+  list-style: none;
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  gap: 1.25rem 2.5rem;
 `
 
 export const ContentListCoffe = styled.section`

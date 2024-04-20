@@ -1,15 +1,16 @@
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import coffeHuge from '../../assets/coffe_huge.svg'
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import {
+  BannerTextLists,
   ContainerInfoBanner,
   ContainerMain,
   ContentInfoBanner,
   ContentListCoffe,
   InfoBannerText,
-  InfoQualityList,
 } from './styles'
 import { Coffe } from './Components/Coffe'
 import { mockCoffes } from './dataMock'
+import { ListsInfos } from '../../components/ListsInfos'
 
 export function Home() {
   return (
@@ -24,32 +25,33 @@ export function Home() {
                 qualquer hora
               </p>
             </div>
-            <ul>
-              <li>
-                <InfoQualityList $statusColor="orange">
-                  <ShoppingCart size={16} weight="fill" />
-                </InfoQualityList>
-                Compra simples e segura
-              </li>
-              <li>
-                <InfoQualityList $statusColor="black">
-                  <Package size={16} weight="fill" />
-                </InfoQualityList>
+            <BannerTextLists>
+              <ListsInfos
+                $statuscolor="orange"
+                icon={<ShoppingCart size={16} weight="fill" />}
+              >
+                Compra simples e segura{' '}
+              </ListsInfos>
+              <ListsInfos
+                $statuscolor="black"
+                icon={<Package size={16} weight="fill" />}
+              >
                 Embalagem mantém o café intacto
-              </li>
-              <li>
-                <InfoQualityList $statusColor="yellow">
-                  <Timer size={16} weight="fill" />
-                </InfoQualityList>
+              </ListsInfos>
+
+              <ListsInfos
+                $statuscolor="yellow"
+                icon={<Timer size={16} weight="fill" />}
+              >
                 Entrega rápida e rastreada
-              </li>
-              <li>
-                <InfoQualityList $statusColor="purple">
-                  <Coffee size={16} weight="fill" />
-                </InfoQualityList>
+              </ListsInfos>
+              <ListsInfos
+                $statuscolor="purple"
+                icon={<Coffee size={16} weight="fill" />}
+              >
                 O café chega fresquinho até você
-              </li>
-            </ul>
+              </ListsInfos>
+            </BannerTextLists>
           </InfoBannerText>
           <img src={coffeHuge} alt="" />
         </ContentInfoBanner>

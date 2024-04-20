@@ -27,6 +27,7 @@ export const CheckoutFormRight = styled.div`
   flex-direction: column;
 
   button {
+    width: 100%;
     padding: 0.75rem;
     color: ${(props) => props.theme.COLORS.WHITE};
     font-size: ${(props) => props.theme.FONT_SIZE['BUTTON-G']}rem;
@@ -45,6 +46,12 @@ export const CheckoutFormRight = styled.div`
 
 export const FormRightPriceList = styled.table`
   margin-bottom: 1.5rem;
+
+  tr {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
 
   strong {
     font-size: ${(props) => props.theme.FONT_SIZE['TEXT-L']}rem;
