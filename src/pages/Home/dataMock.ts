@@ -15,6 +15,7 @@ import mochaccino from '../../assets/coffes/mochaccino.svg'
 
 export const mockCoffes = [
   {
+    id: 1,
     title: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
     imageSrc: expressoTradicional,
@@ -22,6 +23,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 2,
     title: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
     imageSrc: expressoAmericano,
@@ -29,6 +31,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 3,
     title: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias',
     imageSrc: arabe,
@@ -36,6 +39,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 4,
     title: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
     imageSrc: cafeComLeite,
@@ -43,6 +47,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 5,
     title: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
     imageSrc: CafeGelado,
@@ -50,6 +55,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 6,
     title: 'Capuccino',
     description:
       'Bebida com canela feita de doses iguais de café, leite e espuma',
@@ -58,6 +64,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 7,
     title: 'Cubano',
     description:
       'Drink gelado de café expresso com rum, creme de leite e hortelã',
@@ -66,6 +73,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 8,
     title: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco',
     imageSrc: havaiano,
@@ -73,6 +81,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 9,
     title: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
     imageSrc: chocolateQuente,
@@ -80,6 +89,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 10,
     title: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
     imageSrc: expressoCremoso,
@@ -87,6 +97,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 11,
     title: 'Irlandês',
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
     imageSrc: irlandes,
@@ -94,6 +105,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 12,
     title: 'Latte',
     description:
       'Uma dose de café expresso com o dobro de leite e espuma cremosa',
@@ -102,6 +114,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 13,
     title: 'Macchiato',
     description:
       'Café expresso misturado com um pouco de leite quente e espuma',
@@ -110,6 +123,7 @@ export const mockCoffes = [
     price: 9.9,
   },
   {
+    id: 14,
     title: 'Mocaccino',
     description: 'Café expresso com calda de chocolate, pouco leite e espuma',
     imageSrc: mochaccino,
