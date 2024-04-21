@@ -20,21 +20,32 @@ export function Success() {
             $statuscolor={'purple'}
             icon={<MapPin size={16} weight="fill" />}
           >
-            Entrega em <strong>Rua João Daniel Martinelli, 102</strong>Farrapos
-            - Porto Alegre, RS
+            <p>
+              {' '}
+              Entrega em{' '}
+              <strong>
+                Rua João Daniel Martinelli, 102<br></br>
+              </strong>
+              Farrapos - Porto Alegre, RS
+            </p>
           </ListsInfos>
           <ListsInfos
             $statuscolor={'yellow'}
             icon={<Timer size={16} weight="fill" />}
           >
-            Previsão de entrega
-            <strong>20 min - 30 min</strong>
+            <p>
+              Previsão de entrega <br></br>
+              <strong>20 min - 30 min</strong>
+            </p>
           </ListsInfos>
           <ListsInfos
             $statuscolor={'orange'}
             icon={<CurrencyDollar size={16} weight="fill" />}
           >
-            Pagamento na entrega <strong>Cartão de Crédito</strong>
+            <p>
+              Pagamento na entrega <br></br>
+              <strong>Cartão de Crédito</strong>
+            </p>
           </ListsInfos>
         </SuccessLeftTopics>
       </SuccessLeft>

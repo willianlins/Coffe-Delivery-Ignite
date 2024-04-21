@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 export const ContainerListsInfos = styled.li`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.625rem;
 `

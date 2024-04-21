@@ -6,7 +6,9 @@ import { HeaderButtonCart, HeaderButtonCity, HeaderContainer } from './styles'
 export function Header() {
   return (
     <HeaderContainer>
-      <img src={LogoCoffe} alt="" />
+      <NavLink to={'/'}>
+        <img src={LogoCoffe} alt="" />
+      </NavLink>
       <nav>
         <HeaderButtonCity>
           <MapPin size={22} weight="fill" />
