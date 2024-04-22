@@ -62,7 +62,8 @@ export function Home() {
           {mockCoffes.map((coffe) => {
             return (
               <Coffe
-                key={coffe.title}
+                key={coffe.id}
+                id={coffe.id}
                 title={coffe.title}
                 description={coffe.description}
                 imageSrc={coffe.imageSrc}

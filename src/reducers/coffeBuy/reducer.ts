@@ -12,37 +12,40 @@ interface CoffeBuyState {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function coffeBuyReducer(state: CoffeBuyState, action: any) {
   switch (action.type) {
-    case ActionTypes.ADD_QUANTITY_COFFE: {
+    case ActionTypes.ADD_NEW_COFFE: {
       return {
-        ...state,
         coffes: [...state.coffes, action.payload.newCoffe],
       }
     }
-    case ActionTypes.ADD_NEW_COFFE: {
+    case ActionTypes.ADD_QUANTITY_COFFE: {
+      const coffeMod = state.coffes.find((coffe) => {
+        if (coffe.id === action.payload.idCoffe) {
+          return { ...coffe, quantity: coffe.quantity + 1 }
+        }
+        return [coffe]
+      })
       return {
-        ...state,
-        coffes: state.coffes.find((coffe) => {
-          if (coffe.id === action.payload.idCoffe) {
-            return [coffe.id, coffe.quantity++]
-          }
-          return [coffe]
-        }),
+        coffes: [coffeMod],
       }
     }
     case ActionTypes.REMOVE_COFFE: {
       return {
         ...state,
-        coffes: state.coffes.map((coffe) => {
-          if (coffe.id === action.payload.idCoffe) {
-            if (coffe.quantity > 1) {
-              return [coffe.id, coffe.quantity--]
+        coffes: state.coffes
+          .map((coffe) => {
+            if (coffe.id === action.payload.idCoffe) {
+              if (coffe.quantity > 1) {
+                return { ...coffe, quantity: coffe.quantity - 1 }
+              }
+              return null
+            } else {
+              return coffe
             }
-            return false
-          } else {
-            return coffe
-          }
-        }),
+          })
+          .filter(Boolean),
       }
     }
+    default:
+      return state
   }
 }

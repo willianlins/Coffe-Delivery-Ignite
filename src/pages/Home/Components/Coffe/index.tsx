@@ -2,12 +2,13 @@ import { ShoppingCart } from 'phosphor-react'
 
 import { ContainerCoffeInfo, CoffeInfoShooping, CoffeInfo } from './styles'
 
-// import CoffeImg from '../../../../assets/coffes/americano.svg'
-
 import { NavLink } from 'react-router-dom'
 import { QuantityInput } from '../../../../components/QuatityInput'
+import { useRef, useState } from 'react'
+import { Coffebuy } from '../../../../reducers/coffeBuy/reducer'
 
 interface CoffeProps {
+  id: number
   title: string
   description: string
   imageSrc: string
@@ -16,12 +17,16 @@ interface CoffeProps {
 }
 
 export function Coffe({
+  id,
   title,
   description,
   imageSrc,
   price,
   typeCoffe,
 }: CoffeProps) {
+  const [coffeCart, setCoffe] = useState<Coffebuy[]>([])
+  const referenceAmout = useRef()
+
   return (
     <ContainerCoffeInfo>
       <CoffeInfo>
@@ -43,7 +48,7 @@ export function Coffe({
             })}
           </strong>
         </span>
-        <QuantityInput />
+        <QuantityInput ref={referenceAmout} />
         <NavLink to="/Checkout" title="Checkout">
           <button>
             <ShoppingCart size={20} weight="fill" />
