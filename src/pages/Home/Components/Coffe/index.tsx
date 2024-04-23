@@ -4,8 +4,9 @@ import { ContainerCoffeInfo, CoffeInfoShooping, CoffeInfo } from './styles'
 
 import { NavLink } from 'react-router-dom'
 import { QuantityInput } from '../../../../components/QuatityInput'
-import { useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { Coffebuy } from '../../../../reducers/coffeBuy/reducer'
+import { CoffeContext } from '../../../../contexts/CoffeContext'
 
 interface CoffeProps {
   id: number
@@ -24,7 +25,7 @@ export function Coffe({
   price,
   typeCoffe,
 }: CoffeProps) {
-  const [coffeCart, setCoffe] = useState<Coffebuy[]>([])
+  const { coffes, addCoffeCart, addAmountCoffe } = useContext(CoffeContext)
   const [quantityCoffe, setQuantityCoffe] = useState<number>(1)
 
   function lessQuatityCoffe() {
@@ -39,8 +40,13 @@ export function Coffe({
     }
   }
 
-  function teste() {
-    console.log(`id ${id} total ${quantityCoffe}`)
+  function handleAddCoffeCart() {
+    if (coffes.length > 0) {
+      addAmountCoffe(id, quantityCoffe)
+    } else {
+      addCoffeCart({ id, quantity: quantityCoffe })
+    }
+    console.log(coffes)
   }
 
   return (
@@ -70,7 +76,7 @@ export function Coffe({
           quantityCoffe={quantityCoffe}
         />
         {/* <NavLink to="/Checkout" title="Checkout"> */}
-        <button onClick={teste}>
+        <button onClick={handleAddCoffeCart}>
           <ShoppingCart size={20} weight="fill" />
         </button>
         {/* </NavLink> */}

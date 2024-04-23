@@ -5,7 +5,7 @@ import { addNewCoffe, addQuatityCoffe } from '../reducers/coffeBuy/actions'
 interface CoffeContextType {
   coffes: Coffebuy[]
   addCoffeCart: (coffe: Coffebuy) => void
-  addAmountCoffe: (idCoffe: number) => void
+  addAmountCoffe: (idCoffe: number, quantity: number) => void
   removeCoffe: (idCoffe: number) => void
 }
 
@@ -29,8 +29,8 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
     dispatch(addNewCoffe(coffe))
   }
 
-  function addAmountCoffe(idCoffe: number) {
-    dispatch(addQuatityCoffe(idCoffe))
+  function addAmountCoffe(idCoffe: number, quantity: number) {
+    dispatch(addQuatityCoffe(idCoffe, quantity))
   }
 
   function removeCoffe(idCoffe: number) {

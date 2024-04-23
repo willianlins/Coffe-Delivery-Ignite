@@ -20,7 +20,7 @@ export function coffeBuyReducer(state: CoffeBuyState, action: any) {
     case ActionTypes.ADD_QUANTITY_COFFE: {
       const coffeMod = state.coffes.find((coffe) => {
         if (coffe.id === action.payload.idCoffe) {
-          return { ...coffe, quantity: coffe.quantity + 1 }
+          return { ...coffe, quantity: action.payload.quantity }
         }
         return [coffe]
       })
