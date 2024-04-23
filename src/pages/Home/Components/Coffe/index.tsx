@@ -25,7 +25,23 @@ export function Coffe({
   typeCoffe,
 }: CoffeProps) {
   const [coffeCart, setCoffe] = useState<Coffebuy[]>([])
-  const referenceAmout = useRef()
+  const [quantityCoffe, setQuantityCoffe] = useState<number>(1)
+
+  function lessQuatityCoffe() {
+    if (quantityCoffe > 1) {
+      setQuantityCoffe((state) => state - 1)
+    }
+  }
+
+  function moreQuatityCoffe() {
+    if (quantityCoffe < 9) {
+      setQuantityCoffe((state) => state + 1)
+    }
+  }
+
+  function teste() {
+    console.log(`id ${id} total ${quantityCoffe}`)
+  }
 
   return (
     <ContainerCoffeInfo>
@@ -48,12 +64,16 @@ export function Coffe({
             })}
           </strong>
         </span>
-        <QuantityInput ref={referenceAmout} />
-        <NavLink to="/Checkout" title="Checkout">
-          <button>
-            <ShoppingCart size={20} weight="fill" />
-          </button>
-        </NavLink>
+        <QuantityInput
+          lessQuatityCoffe={lessQuatityCoffe}
+          moreQuatityCoffe={moreQuatityCoffe}
+          quantityCoffe={quantityCoffe}
+        />
+        {/* <NavLink to="/Checkout" title="Checkout"> */}
+        <button onClick={teste}>
+          <ShoppingCart size={20} weight="fill" />
+        </button>
+        {/* </NavLink> */}
       </CoffeInfoShooping>
     </ContainerCoffeInfo>
   )

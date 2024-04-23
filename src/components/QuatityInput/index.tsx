@@ -1,28 +1,22 @@
 import { Minus, Plus } from 'phosphor-react'
 import { CoffeInfoAmount } from './styles'
-import { useState } from 'react'
 
 interface QuantityInputProps {
   sizetype?: string
+  quantityCoffe: number
+  lessQuatityCoffe: () => void
+  moreQuatityCoffe: () => void
 }
 
-export function QuantityInput({ sizetype = 'huge' }: QuantityInputProps) {
-  const [quantityCoffe, setQuantityCoffe] = useState<number>(1)
-
-  function handleLessQuatityCoffe() {
-    if (quantityCoffe > 1) {
-      setQuantityCoffe((state) => state - 1)
-    }
-  }
-
-  function handleMoreQuatityCoffe() {
-    if (quantityCoffe < 9) {
-      setQuantityCoffe((state) => state + 1)
-    }
-  }
+export function QuantityInput({
+  sizetype = 'huge',
+  quantityCoffe,
+  lessQuatityCoffe,
+  moreQuatityCoffe,
+}: QuantityInputProps) {
   return (
     <CoffeInfoAmount sizetype={sizetype}>
-      <Minus size={16} weight="fill" onClick={handleLessQuatityCoffe} />
+      <Minus size={16} weight="fill" onClick={lessQuatityCoffe} />
       <input
         type="number"
         step={1}
@@ -31,7 +25,7 @@ export function QuantityInput({ sizetype = 'huge' }: QuantityInputProps) {
         value={quantityCoffe}
         onChange={() => quantityCoffe}
       />
-      <Plus size={16} weight="fill" onClick={handleMoreQuatityCoffe} />
+      <Plus size={16} weight="fill" onClick={moreQuatityCoffe} />
     </CoffeInfoAmount>
   )
 }
