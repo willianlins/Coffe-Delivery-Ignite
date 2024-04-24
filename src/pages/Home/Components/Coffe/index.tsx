@@ -2,10 +2,9 @@ import { ShoppingCart } from 'phosphor-react'
 
 import { ContainerCoffeInfo, CoffeInfoShooping, CoffeInfo } from './styles'
 
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 import { QuantityInput } from '../../../../components/QuatityInput'
-import { useContext, useRef, useState } from 'react'
-import { Coffebuy } from '../../../../reducers/coffeBuy/reducer'
+import { useContext, useState } from 'react'
 import { CoffeContext } from '../../../../contexts/CoffeContext'
 
 interface CoffeProps {
@@ -46,7 +45,8 @@ export function Coffe({
     } else {
       addCoffeCart({ id, quantity: quantityCoffe })
     }
-    console.log(coffes)
+
+    setQuantityCoffe(1)
   }
 
   return (

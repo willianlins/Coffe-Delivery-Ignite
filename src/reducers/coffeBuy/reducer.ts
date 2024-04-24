@@ -14,18 +14,27 @@ export function coffeBuyReducer(state: CoffeBuyState, action: any) {
   switch (action.type) {
     case ActionTypes.ADD_NEW_COFFE: {
       return {
-        coffes: [...state.coffes, action.payload.newCoffe],
+        coffes: [action.payload.newCoffe],
       }
     }
     case ActionTypes.ADD_QUANTITY_COFFE: {
-      const coffeMod = state.coffes.find((coffe) => {
-        if (coffe.id === action.payload.idCoffe) {
-          return { ...coffe, quantity: action.payload.quantity }
-        }
-        return [coffe]
-      })
+      const cofferArray = [...state.coffes]
+
+      const coffeMod = cofferArray.find(
+        (coffe) => coffe.id === action.payload.idCoffe,
+      )
+
+      if (coffeMod) {
+        coffeMod.quantity = action.payload.quantity
+      } else {
+        cofferArray.push({
+          id: action.payload.idCoffe,
+          quantity: action.payload.quantity,
+        })
+      }
+
       return {
-        coffes: [coffeMod],
+        coffes: cofferArray,
       }
     }
     case ActionTypes.REMOVE_COFFE: {
