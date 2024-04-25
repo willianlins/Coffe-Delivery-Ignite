@@ -1,4 +1,5 @@
-import { ShoppingCart } from 'phosphor-react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Check, ShoppingCart } from 'phosphor-react'
 
 import { ContainerCoffeInfo, CoffeInfoShooping, CoffeInfo } from './styles'
 
@@ -26,6 +27,7 @@ export function Coffe({
 }: CoffeProps) {
   const { coffes, addCoffeCart, addAmountCoffe } = useContext(CoffeContext)
   const [quantityCoffe, setQuantityCoffe] = useState<number>(1)
+  const [isCheck, setIsCheck] = useState(false)
 
   function lessQuatityCoffe() {
     if (quantityCoffe > 1) {
@@ -45,8 +47,11 @@ export function Coffe({
     } else {
       addCoffeCart({ id, quantity: quantityCoffe })
     }
-
     setQuantityCoffe(1)
+    setIsCheck(true)
+    setTimeout(() => {
+      setIsCheck(false)
+    }, 1000)
   }
 
   return (
@@ -61,7 +66,7 @@ export function Coffe({
         <h3>{title}</h3>
         <p>{description}</p>
       </CoffeInfo>
-      <CoffeInfoShooping>
+      <CoffeInfoShooping $isactive={isCheck}>
         <span>
           R$
           <strong>
@@ -77,7 +82,8 @@ export function Coffe({
         />
         {/* <NavLink to="/Checkout" title="Checkout"> */}
         <button onClick={handleAddCoffeCart}>
-          <ShoppingCart size={20} weight="fill" />
+          {!isCheck && <ShoppingCart size={20} weight="fill" />}
+          {isCheck && <Check size={20} weight="fill" />}
         </button>
         {/* </NavLink> */}
       </CoffeInfoShooping>

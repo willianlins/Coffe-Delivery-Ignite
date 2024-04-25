@@ -48,7 +48,11 @@ export const CoffeInfo = styled.div`
   `}
 `
 
-export const CoffeInfoShooping = styled.div`
+interface CoffeInfoShoopingProps {
+  $isactive?: boolean
+}
+
+export const CoffeInfoShooping = styled.div<CoffeInfoShoopingProps>`
   ${({ theme }) => css`
     display: flex;
     flex-direction: row;
@@ -77,13 +81,21 @@ export const CoffeInfoShooping = styled.div`
       border-radius: 6px;
       padding: 0.563rem;
       color: ${theme.COLORS['BASE-CARD']};
-      background: ${theme.COLORS['PURPLE-DARK']};
       cursor: pointer;
       transition: background-color 0.3s;
-
-      &:hover {
-        background: ${theme.COLORS.PURPLE};
-      }
     }
   `}
+  button {
+    background: ${(props) =>
+      !props?.$isactive
+        ? props.theme.COLORS['PURPLE-DARK']
+        : props.theme.COLORS['YELLOW-DARK']};
+
+    &:hover {
+      background: ${(props) =>
+        !props?.$isactive
+          ? props.theme.COLORS.PURPLE
+          : props.theme.COLORS['YELLOW-DARK']};
+    }
+  }
 `
