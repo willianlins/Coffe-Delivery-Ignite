@@ -4,6 +4,7 @@ export enum ActionTypes {
   ADD_NEW_COFFE = 'ADD_NEW_COFFE',
   ADD_QUANTITY_COFFE = 'ADD_QUANTITY_COFFE',
   REMOVE_COFFE = 'REMOVE_COFFE',
+  UPDATE_QUANTITY_COFFE = 'UPDATE_QUANTITY_COFFE',
 }
 
 export function addNewCoffe(newCoffe: Coffebuy) {
@@ -30,6 +31,16 @@ export function addQuatityCoffe(
       title,
       imgSRC,
       price,
+    },
+  }
+}
+
+export function updateQuatityCoffe(idCoffe: number, quantity: number) {
+  return {
+    type: ActionTypes.UPDATE_QUANTITY_COFFE,
+    payload: {
+      idCoffe,
+      quantity,
     },
   }
 }

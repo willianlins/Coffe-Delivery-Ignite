@@ -45,6 +45,15 @@ export function coffeBuyReducer(state: CoffeBuyState, action: any) {
         draft.coffes[coffeMod].quantity += action.payload.quantity
       })
     }
+    case ActionTypes.UPDATE_QUANTITY_COFFE: {
+      const coffeMod = state.coffes.findIndex((coffe) => {
+        return coffe.id === action.payload.idCoffe
+      })
+
+      return produce(state, (draft) => {
+        draft.coffes[coffeMod].quantity = action.payload.quantity
+      })
+    }
     case ActionTypes.REMOVE_COFFE: {
       return {
         ...state,

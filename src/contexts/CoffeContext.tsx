@@ -1,6 +1,10 @@
 import { ReactNode, createContext, useReducer } from 'react'
 import { Coffebuy, coffeBuyReducer } from '../reducers/coffeBuy/reducer'
-import { addNewCoffe, addQuatityCoffe } from '../reducers/coffeBuy/actions'
+import {
+  addNewCoffe,
+  addQuatityCoffe,
+  updateQuatityCoffe,
+} from '../reducers/coffeBuy/actions'
 
 interface CoffeContextType {
   coffes: Coffebuy[]
@@ -13,6 +17,7 @@ interface CoffeContextType {
     price: number,
   ) => void
   removeCoffe: (idCoffe: number) => void
+  updateQuatityCoffes: (idCoffe: number, quantity: number) => void
 }
 
 export const CoffeContext = createContext({} as CoffeContextType)
@@ -56,9 +61,19 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
     dispatch(removeCoffe(idCoffe))
   }
 
+  function updateQuatityCoffes(idCoffe: number, quantity: number) {
+    dispatch(updateQuatityCoffe(idCoffe, quantity))
+  }
+
   return (
     <CoffeContext.Provider
-      value={{ coffes, addCoffeCart, addAmountCoffe, removeCoffe }}
+      value={{
+        coffes,
+        addCoffeCart,
+        addAmountCoffe,
+        removeCoffe,
+        updateQuatityCoffes,
+      }}
     >
       {children}
     </CoffeContext.Provider>

@@ -96,6 +96,7 @@ export function Checkout() {
               return (
                 <FormRightListCoffe key={coffe.id}>
                   <CoffeList
+                    id={coffe.id}
                     title={coffe.title}
                     imgSRC={coffe.imgSRC}
                     price={(coffe.price * coffe.quantity).toLocaleString(

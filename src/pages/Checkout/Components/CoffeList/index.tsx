@@ -2,16 +2,24 @@ import { Trash } from 'phosphor-react'
 import { QuantityInput } from '../../../../components/QuatityInput'
 import { CoffeListDetails, ContainerCoffeList } from './styles'
 import { Coffebuy } from '../../../../reducers/coffeBuy/reducer'
-import { useState } from 'react'
+import { useCallback, useContext, useState } from 'react'
+import { CoffeContext } from '../../../../contexts/CoffeContext'
 
-interface CoffeListProps extends Omit<Coffebuy, 'id' | 'price'> {
+interface CoffeListProps extends Omit<Coffebuy, 'price'> {
   price: string
 }
 
-export function CoffeList({ title, imgSRC, price, quantity }: CoffeListProps) {
+export function CoffeList({
+  id,
+  title,
+  imgSRC,
+  price,
+  quantity,
+}: CoffeListProps) {
   const [amountCoffe, setAmountCoffe] = useState(quantity)
-
+  const { updateQuatityCoffes } = useContext(CoffeContext)
   function lessQuatityCoffe() {
+    console.log(quantity)
     if (amountCoffe > 1) {
       setAmountCoffe((state) => state - 1)
     }
@@ -22,6 +30,10 @@ export function CoffeList({ title, imgSRC, price, quantity }: CoffeListProps) {
       setAmountCoffe((state) => state + 1)
     }
   }
+
+  useCallback(() => {
+    updateQuatityCoffes(id, amountCoffe)
+  }, [amountCoffe, id, updateQuatityCoffes])
 
   return (
     <ContainerCoffeList>

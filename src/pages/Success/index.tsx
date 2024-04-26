@@ -7,8 +7,14 @@ import {
   SuccessLeftTopics,
   SuccessRight,
 } from './styles'
+import { useContext } from 'react'
+import { CoffeContext } from '../../contexts/CoffeContext'
 
 export function Success() {
+  const { coffes } = useContext(CoffeContext)
+
+  console.log(coffes)
+
   return (
     <ContainerSuccess>
       <SuccessLeft>
