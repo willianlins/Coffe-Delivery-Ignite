@@ -9,7 +9,7 @@ import {
   InfoBannerText,
 } from './styles'
 import { Coffe } from './Components/Coffe'
-import { mockCoffes } from './dataMock'
+import { mockCoffes } from '../../data/dataMock'
 import { ListsInfos } from '../../components/ListsInfos'
 
 export function Home() {

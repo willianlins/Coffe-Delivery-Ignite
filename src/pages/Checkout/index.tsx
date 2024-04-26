@@ -12,8 +12,20 @@ import {
 } from './styles'
 import { CoffeList } from './Components/CoffeList'
 import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import { CoffeContext } from '../../contexts/CoffeContext'
 
 export function Checkout() {
+  const { coffes } = useContext(CoffeContext)
+  function lessQuatityCoffe() {
+    console.log('clicou lessQuatityCoffe')
+  }
+
+  function moreQuatityCoffe() {
+    console.log('clicou moreQuatityCoffe')
+  }
+  console.log(coffes)
+
   return (
     <ContainerCheckout>
       <div>
@@ -87,12 +99,29 @@ export function Checkout() {
       <div>
         <h2>Cafés selecionados</h2>
         <CheckoutFormRight>
-          <FormRightListCoffe>
-            <CoffeList />
-          </FormRightListCoffe>
-          <FormRightListCoffe>
-            <CoffeList />
-          </FormRightListCoffe>
+          {coffes.length > 0 ? (
+            coffes.map((coffe) => {
+              return (
+                <FormRightListCoffe key={coffe.id}>
+                  <CoffeList
+                    title={coffe.title}
+                    imgSRC={coffe.imgSRC}
+                    price={(coffe.price * coffe.quantity).toLocaleString(
+                      'pt-br',
+                      {
+                        minimumFractionDigits: 2,
+                      },
+                    )}
+                    quantity={coffe.quantity}
+                    moreQuatityCoffe={moreQuatityCoffe}
+                    lessQuatityCoffe={lessQuatityCoffe}
+                  />
+                </FormRightListCoffe>
+              )
+            })
+          ) : (
+            <div></div>
+          )}
 
           <FormRightPriceList>
             <tbody>

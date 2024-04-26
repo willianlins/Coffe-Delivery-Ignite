@@ -11,6 +11,7 @@ export const CoffeInfoAmount = styled.div<CoffeInfoAmountProps>`
   align-items: center;
   justify-content: center;
   border-radius: 6px;
+  padding: 0.375rem;
   background: ${(props) => props.theme.COLORS['BASE-BUTTON']};
 
   input::-webkit-inner-spin-button {

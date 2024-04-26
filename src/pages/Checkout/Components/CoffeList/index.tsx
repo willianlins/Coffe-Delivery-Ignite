@@ -1,16 +1,34 @@
 import { Trash } from 'phosphor-react'
 import { QuantityInput } from '../../../../components/QuatityInput'
 import { CoffeListDetails, ContainerCoffeList } from './styles'
+import { Coffebuy } from '../../../../reducers/coffeBuy/reducer'
 
-import imgCoffe from '../../../../assets/coffes/americano.svg'
-export function CoffeList() {
+interface CoffeListProps extends Omit<Coffebuy, 'id' | 'price'> {
+  price: string
+  lessQuatityCoffe: () => void
+  moreQuatityCoffe: () => void
+}
+
+export function CoffeList({
+  title,
+  imgSRC,
+  price,
+  quantity,
+  lessQuatityCoffe,
+  moreQuatityCoffe,
+}: CoffeListProps) {
   return (
     <ContainerCoffeList>
-      <img src={imgCoffe} alt="" />
+      <img src={imgSRC} alt="" />
       <CoffeListDetails>
-        <p>Expresso Tradicional</p>
+        <p>{title}</p>
         <div>
-          <QuantityInput sizetype={`small`} />
+          <QuantityInput
+            lessQuatityCoffe={lessQuatityCoffe}
+            quantityCoffe={quantity}
+            moreQuatityCoffe={moreQuatityCoffe}
+            sizetype={`small`}
+          />
           <button>
             <Trash size={16} />
             REMOVER
@@ -18,7 +36,7 @@ export function CoffeList() {
         </div>
       </CoffeListDetails>
       <span>
-        <strong>R$ 9,90</strong>
+        <strong>R$ {price}</strong>
       </span>
     </ContainerCoffeList>
   )

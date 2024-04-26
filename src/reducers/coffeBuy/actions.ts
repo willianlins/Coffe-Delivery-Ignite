@@ -15,12 +15,21 @@ export function addNewCoffe(newCoffe: Coffebuy) {
   }
 }
 
-export function addQuatityCoffe(idCoffe: number, quantity: number) {
+export function addQuatityCoffe(
+  idCoffe: number,
+  quantity: number,
+  title: string,
+  imgSRC: string,
+  price: number,
+) {
   return {
     type: ActionTypes.ADD_QUANTITY_COFFE,
     payload: {
       idCoffe,
       quantity,
+      title,
+      imgSRC,
+      price,
     },
   }
 }

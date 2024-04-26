@@ -26,8 +26,8 @@ export function Coffe({
   typeCoffe,
 }: CoffeProps) {
   const { coffes, addCoffeCart, addAmountCoffe } = useContext(CoffeContext)
-  const [quantityCoffe, setQuantityCoffe] = useState<number>(1)
   const [isCheck, setIsCheck] = useState(false)
+  const [quantityCoffe, setQuantityCoffe] = useState<number>(1)
 
   function lessQuatityCoffe() {
     if (quantityCoffe > 1) {
@@ -42,11 +42,17 @@ export function Coffe({
   }
 
   function handleAddCoffeCart() {
-    if (coffes.length > 0) {
-      addAmountCoffe(id, quantityCoffe)
-    } else {
-      addCoffeCart({ id, quantity: quantityCoffe })
-    }
+    // if (coffes.length > 0) {
+    addAmountCoffe(id, quantityCoffe, title, imageSrc, price)
+    // } else {
+    //   addCoffeCart({
+    //     id,
+    //     quantity: quantityCoffe,
+    //     title,
+    //     imgSRC: imageSrc,
+    //     price,
+    //   })
+    // }
     setQuantityCoffe(1)
     setIsCheck(true)
     setTimeout(() => {

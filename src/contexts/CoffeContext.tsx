@@ -5,7 +5,13 @@ import { addNewCoffe, addQuatityCoffe } from '../reducers/coffeBuy/actions'
 interface CoffeContextType {
   coffes: Coffebuy[]
   addCoffeCart: (coffe: Coffebuy) => void
-  addAmountCoffe: (idCoffe: number, quantity: number) => void
+  addAmountCoffe: (
+    idCoffe: number,
+    quantity: number,
+    title: string,
+    imgSRC: string,
+    price: number,
+  ) => void
   removeCoffe: (idCoffe: number) => void
 }
 
@@ -26,11 +32,24 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
   const { coffes } = coffe
 
   function addCoffeCart(coffe: Coffebuy) {
-    dispatch(addNewCoffe(coffe))
+    const newCoffe: Coffebuy = {
+      id: coffe.id,
+      quantity: coffe.quantity,
+      title: coffe.title,
+      imgSRC: coffe.imgSRC,
+      price: coffe.price,
+    }
+    dispatch(addNewCoffe(newCoffe))
   }
 
-  function addAmountCoffe(idCoffe: number, quantity: number) {
-    dispatch(addQuatityCoffe(idCoffe, quantity))
+  function addAmountCoffe(
+    idCoffe: number,
+    quantity: number,
+    title: string,
+    imgSRC: string,
+    price: number,
+  ) {
+    dispatch(addQuatityCoffe(idCoffe, quantity, title, imgSRC, price))
   }
 
   function removeCoffe(idCoffe: number) {

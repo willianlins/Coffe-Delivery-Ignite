@@ -3,6 +3,9 @@ import { ActionTypes } from './actions'
 export interface Coffebuy {
   id: number
   quantity: number
+  title: string
+  imgSRC: string
+  price: number
 }
 
 interface CoffeBuyState {
@@ -25,11 +28,17 @@ export function coffeBuyReducer(state: CoffeBuyState, action: any) {
       )
 
       if (coffeMod) {
-        coffeMod.quantity = action.payload.quantity
+        coffeMod.quantity += action.payload.quantity
+        // coffeMod.title = action.payload.title
+        // coffeMod.imgSRC = action.payload.imgSRC
+        // coffeMod.price = action.payload.price
       } else {
         cofferArray.push({
           id: action.payload.idCoffe,
           quantity: action.payload.quantity,
+          title: action.payload.title,
+          imgSRC: action.payload.imgSRC,
+          price: action.payload.price,
         })
       }
 
