@@ -17,14 +17,6 @@ import { CoffeContext } from '../../contexts/CoffeContext'
 
 export function Checkout() {
   const { coffes } = useContext(CoffeContext)
-  function lessQuatityCoffe() {
-    console.log('clicou lessQuatityCoffe')
-  }
-
-  function moreQuatityCoffe() {
-    console.log('clicou moreQuatityCoffe')
-  }
-  console.log(coffes)
 
   return (
     <ContainerCheckout>
@@ -113,8 +105,6 @@ export function Checkout() {
                       },
                     )}
                     quantity={coffe.quantity}
-                    moreQuatityCoffe={moreQuatityCoffe}
-                    lessQuatityCoffe={lessQuatityCoffe}
                   />
                 </FormRightListCoffe>
               )

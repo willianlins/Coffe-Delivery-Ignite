@@ -1,3 +1,4 @@
+import { produce } from 'immer'
 import { ActionTypes } from './actions'
 
 export interface Coffebuy {
@@ -23,16 +24,11 @@ export function coffeBuyReducer(state: CoffeBuyState, action: any) {
     case ActionTypes.ADD_QUANTITY_COFFE: {
       const cofferArray = [...state.coffes]
 
-      const coffeMod = cofferArray.find(
-        (coffe) => coffe.id === action.payload.idCoffe,
-      )
+      const coffeMod = cofferArray.findIndex((coffe) => {
+        return coffe.id === action.payload.idCoffe
+      })
 
-      if (coffeMod) {
-        coffeMod.quantity += action.payload.quantity
-        // coffeMod.title = action.payload.title
-        // coffeMod.imgSRC = action.payload.imgSRC
-        // coffeMod.price = action.payload.price
-      } else {
+      if (coffeMod < 0) {
         cofferArray.push({
           id: action.payload.idCoffe,
           quantity: action.payload.quantity,
@@ -40,11 +36,14 @@ export function coffeBuyReducer(state: CoffeBuyState, action: any) {
           imgSRC: action.payload.imgSRC,
           price: action.payload.price,
         })
+        return {
+          coffes: cofferArray,
+        }
       }
 
-      return {
-        coffes: cofferArray,
-      }
+      return produce(state, (draft) => {
+        draft.coffes[coffeMod].quantity += action.payload.quantity
+      })
     }
     case ActionTypes.REMOVE_COFFE: {
       return {
