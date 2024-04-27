@@ -18,6 +18,7 @@ export default {
     'BASE-CARD': '#F3F2F2',
     BACKGROUND: '#FAFAFA',
     WHITE: '#FFFFFF',
+    RED: '#FF2A2A',
   },
   FONT_FAMILY: {
     TITLE: '"Baloo 2"',

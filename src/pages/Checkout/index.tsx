@@ -1,4 +1,10 @@
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from 'phosphor-react'
+import { CoffeList } from './Components/CoffeList'
+import { useContext } from 'react'
+import { CoffeContext } from '../../contexts/CoffeContext'
+import * as zod from 'zod'
+import { useNavigate } from 'react-router-dom'
+
 import {
   CheckoutFormLeftInfo,
   CheckoutFormLeftInfoHeader,
@@ -10,20 +16,49 @@ import {
   FormRightListCoffe,
   FormRightPriceList,
 } from './styles'
-import { CoffeList } from './Components/CoffeList'
-import { NavLink } from 'react-router-dom'
-import { useContext } from 'react'
-import { CoffeContext } from '../../contexts/CoffeContext'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+const coffeBuyValidationSchema = zod.object({
+  cep: zod.string().min(8, 'Informe o cep').max(8, 'Informe o cep'),
+  rua: zod.string().min(5, 'Informe o endereço'),
+  numero: zod.string().min(1, 'Informe o número'),
+  bairro: zod.string().min(5, 'Informe o bairro'),
+  cidade: zod.string().min(1, 'Informe a cidade'),
+  uf: zod.string().min(1, 'Informe a UF'),
+  payment: zod.string(),
+})
+
+type newCoffeBuy = zod.infer<typeof coffeBuyValidationSchema>
 
 export function Checkout() {
-  const { coffes } = useContext(CoffeContext)
+  const { coffes, removeAllCoffeCart } = useContext(CoffeContext)
+  const { handleSubmit, register, reset, formState } = useForm<newCoffeBuy>({
+    resolver: zodResolver(coffeBuyValidationSchema),
+    defaultValues: {
+      cep: '',
+      rua: '',
+      numero: '',
+      bairro: '',
+      cidade: '',
+      uf: '',
+    },
+  })
+  const navigate = useNavigate()
+
+  function handleCoffeBuy() {
+    reset()
+    removeAllCoffeCart()
+    navigate(`/success`)
+  }
+
   const VALUEDELIVERY = 3.5
   const VALUECART = coffes.reduce((ac, current) => {
     return ac + current.price * current.quantity
   }, 0)
 
   return (
-    <ContainerCheckout>
+    <ContainerCheckout onSubmit={handleSubmit(handleCoffeBuy)} action="">
       <div>
         <h2>Complete seu pedido</h2>
         <div>
@@ -36,9 +71,22 @@ export function Checkout() {
               </div>
             </CheckoutFormLeftInfoHeader>
             <FormLeftInfoInput>
-              <input type="text" placeholder="CEP" name="CEP" />
-              <input type="text" placeholder="Rua" name="Rua" />
-              <input type="text" placeholder="Número" name="Numero" />
+              <span>
+                <input type="text" placeholder="CEP" {...register('cep')} />
+                {formState?.errors?.cep?.message}
+              </span>
+              <span>
+                <input type="text" placeholder="Rua" {...register('rua')} />
+                {formState?.errors?.rua?.message}
+              </span>
+              <span>
+                <input
+                  type="text"
+                  placeholder="Número"
+                  {...register('numero')}
+                />
+                {formState?.errors?.numero?.message}
+              </span>
               <div tabIndex={0}>
                 <input
                   type="text"
@@ -47,9 +95,26 @@ export function Checkout() {
                 />
                 Opcional
               </div>
-              <input type="text" placeholder="Bairro" name="Bairro" />
-              <input type="text" placeholder="Cidade" name="Cidade" />
-              <input type="text" placeholder="UF" name="UF" />
+              <span>
+                <input
+                  type="text"
+                  placeholder="Bairro"
+                  {...register('bairro')}
+                />
+                {formState?.errors?.bairro?.message}
+              </span>
+              <span>
+                <input
+                  type="text"
+                  placeholder="Cidade"
+                  {...register('cidade')}
+                />
+                {formState?.errors?.cidade?.message}
+              </span>
+              <span>
+                <input type="text" placeholder="UF" {...register('uf')} />
+                {formState?.errors?.uf?.message}
+              </span>
             </FormLeftInfoInput>
           </CheckoutFormLeftInfo>
           <CheckoutFormLeftPayment>
@@ -68,7 +133,7 @@ export function Checkout() {
                 type="radio"
                 id="creditCard"
                 value="creditCard"
-                name="payment"
+                {...register('payment')}
               />
               <label htmlFor="creditCard">
                 <CreditCard size={16} /> CARTÃO DE CRÉDITO
@@ -78,13 +143,19 @@ export function Checkout() {
                 type="radio"
                 id="debitCard"
                 value="debitCard"
-                name="payment"
+                {...register('payment')}
               />
               <label htmlFor="debitCard">
                 <Bank size={16} /> CARTÃO DE DÉBITO
               </label>
 
-              <input type="radio" id="money" value="money" name="payment" />
+              <input
+                type="radio"
+                id="money"
+                value="money"
+                {...register('payment')}
+                defaultChecked
+              />
               <label htmlFor="money">
                 <Money size={16} /> Dinheiro
               </label>
@@ -153,9 +224,9 @@ export function Checkout() {
               </tr>
             </tbody>
           </FormRightPriceList>
-          <NavLink to={'/Success'}>
-            <button type="submit">CONFIRMAR PEDIDO</button>
-          </NavLink>
+          {/* <NavLink to={'/Success'}> */}
+          <button type="submit">CONFIRMAR PEDIDO</button>
+          {/* </NavLink> */}
         </CheckoutFormRight>
       </div>
     </ContainerCheckout>

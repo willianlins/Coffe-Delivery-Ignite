@@ -63,6 +63,11 @@ export function coffeBuyReducer(state: CoffeBuyState, action: any) {
         ),
       }
     }
+    case ActionTypes.REMOVE_ALL_COFFE: {
+      return {
+        coffes: [],
+      }
+    }
     default:
       return state
   }

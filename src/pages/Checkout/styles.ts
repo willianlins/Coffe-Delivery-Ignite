@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-export const ContainerCheckout = styled.main`
+export const ContainerCheckout = styled.form`
   width: 74rem;
   margin: 0 auto;
   padding: 2rem;
@@ -109,8 +109,19 @@ export const CheckoutFormLeftInfo = styled(CheckoutFormLeft)``
 export const FormLeftInfoInput = styled.div`
   ${({ theme }) => css`
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start;
     gap: 1rem;
+
+    span {
+      display: flex;
+      flex-direction: column;
+      color: ${theme.COLORS.RED};
+      font-size: ${theme.FONT_SIZE['TEXT-XS']}rem;
+      gap: 0.61rem;
+    }
+
     input {
       background: ${theme.COLORS['BASE-INPUT']};
       border: 1px solid ${theme.COLORS['BASE-BUTTON']};
@@ -141,19 +152,19 @@ export const FormLeftInfoInput = styled.div`
         border-color: ${(props) => props.theme.COLORS['YELLOW-DARK']};
       }
     }
-    [name='CEP'],
-    [name='Numero'],
-    [name='Bairro'] {
+    [name='cep'],
+    [name='numero'],
+    [name='bairro'] {
       width: 12.5rem;
     }
-    [name='Rua'] {
+    [name='rua'] {
       width: 35rem;
     }
     [name='Complemento'],
-    [name='Cidade'] {
+    [name='cidade'] {
       flex: 1;
     }
-    [name='UF'] {
+    [name='uf'] {
       width: 3.75rem;
     }
     [name='Cidade'] {
@@ -163,6 +174,7 @@ export const FormLeftInfoInput = styled.div`
     div {
       display: flex;
       align-items: center;
+      justify-content: flex-start;
       background: ${theme.COLORS['BASE-INPUT']};
       border: 1px solid ${theme.COLORS['BASE-BUTTON']};
       border-radius: 4px;

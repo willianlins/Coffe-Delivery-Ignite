@@ -3,6 +3,7 @@ import { Coffebuy, coffeBuyReducer } from '../reducers/coffeBuy/reducer'
 import {
   addNewCoffe,
   addQuatityCoffe,
+  removeAllCoffe,
   removeCoffe,
   updateQuatityCoffe,
 } from '../reducers/coffeBuy/actions'
@@ -19,6 +20,7 @@ interface CoffeContextType {
   ) => void
   removeCoffeId: (idCoffe: number) => void
   updateQuatityCoffes: (idCoffe: number, quantity: number) => void
+  removeAllCoffeCart: () => void
 }
 
 export const CoffeContext = createContext({} as CoffeContextType)
@@ -66,6 +68,10 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
     dispatch(updateQuatityCoffe(idCoffe, quantity))
   }
 
+  function removeAllCoffeCart() {
+    dispatch(removeAllCoffe())
+  }
+
   return (
     <CoffeContext.Provider
       value={{
@@ -74,6 +80,7 @@ export function CoffeContextProvider({ children }: CoffeContextProviderProps) {
         addAmountCoffe,
         removeCoffeId,
         updateQuatityCoffes,
+        removeAllCoffeCart,
       }}
     >
       {children}
