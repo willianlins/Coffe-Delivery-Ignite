@@ -17,6 +17,10 @@ import { CoffeContext } from '../../contexts/CoffeContext'
 
 export function Checkout() {
   const { coffes } = useContext(CoffeContext)
+  const VALUEDELIVERY = 3.5
+  const VALUECART = coffes.reduce((ac, current) => {
+    return ac + current.price * current.quantity
+  }, 0)
 
   return (
     <ContainerCheckout>
@@ -118,18 +122,33 @@ export function Checkout() {
             <tbody>
               <tr>
                 <td>Total de itens</td>
-                <td>R$ 29,70</td>
+                <td>
+                  R${' '}
+                  {VALUECART.toLocaleString('pt-br', {
+                    minimumFractionDigits: 2,
+                  })}
+                </td>
               </tr>
               <tr>
                 <td>Entrega</td>
-                <td>R$ 3,50</td>
+                <td>
+                  R${' '}
+                  {VALUEDELIVERY.toLocaleString('pt-br', {
+                    minimumFractionDigits: 2,
+                  })}
+                </td>
               </tr>
               <tr>
                 <td>
                   <strong>Total</strong>
                 </td>
                 <td>
-                  <strong>R$ 33,50</strong>
+                  <strong>
+                    R${' '}
+                    {(VALUECART + VALUEDELIVERY).toLocaleString('pt-br', {
+                      minimumFractionDigits: 2,
+                    })}
+                  </strong>
                 </td>
               </tr>
             </tbody>

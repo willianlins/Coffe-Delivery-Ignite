@@ -55,20 +55,12 @@ export function coffeBuyReducer(state: CoffeBuyState, action: any) {
       })
     }
     case ActionTypes.REMOVE_COFFE: {
+      const cofferArray = [...state.coffes]
+
       return {
-        ...state,
-        coffes: state.coffes
-          .map((coffe) => {
-            if (coffe.id === action.payload.idCoffe) {
-              if (coffe.quantity > 1) {
-                return { ...coffe, quantity: coffe.quantity - 1 }
-              }
-              return null
-            } else {
-              return coffe
-            }
-          })
-          .filter(Boolean),
+        coffes: cofferArray.filter(
+          (coffe) => coffe.id !== action.payload.idCoffe,
+        ),
       }
     }
     default:
